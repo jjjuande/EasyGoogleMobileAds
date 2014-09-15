@@ -40,12 +40,34 @@ public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
 	
 	public BannerView bannerView;
 	
-	void Start () {
-	
+	void OnEnable(){
+		// Destroy the banner if exists (This can happen. I don't know why)
+		destroyAd();
+				
 		// Create banner
-		bannerView = new BannerView(
-			adUnitID, getAdSize(), adPosition);
-			
+		bannerView = new BannerView(adUnitID, getAdSize(), adPosition);
+		
+		// Load the banner with the request.
+		bannerView.LoadAd(getAdRequest());
+	}
+	
+	void OnDisable(){
+		destroyAd();
+	}
+
+	void OnDestroy() {
+		destroyAd();
+	}
+	
+	private void destroyAd(){
+		if(bannerView!=null){
+			bannerView.Destroy();
+			bannerView = null;
+		}
+	}	
+	
+	private AdRequest getAdRequest(){
+		
 		// Creating the request builder
 		AdRequest.Builder requestBuilder = new AdRequest.Builder();
 		
@@ -70,10 +92,7 @@ public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
 		if(gender != Gender.Unknown) 
 			requestBuilder.SetGender(gender);
 		
-		AdRequest request = requestBuilder.Build();
-		
-		// Load the banner with the request.
-		bannerView.LoadAd(request);
+		return requestBuilder.Build();
 	}
 	
 	private GoogleMobileAds.Api.AdSize getAdSize(){
@@ -100,10 +119,6 @@ public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
 			}
 		}
 		return result;
-	}
-
-	void OnDestroy() {
-		bannerView.Destroy();
-	}
+	}	
 
 }
