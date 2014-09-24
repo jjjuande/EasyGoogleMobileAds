@@ -61,6 +61,7 @@ public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
 	
 	private void destroyAd(){
 		if(bannerView!=null){
+			bannerView.Hide();
 			bannerView.Destroy();
 			bannerView = null;
 		}
