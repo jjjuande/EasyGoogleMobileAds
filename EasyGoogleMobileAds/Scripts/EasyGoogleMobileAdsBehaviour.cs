@@ -23,7 +23,9 @@ public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
 	
 	public Languages editorLanguage = Languages.English;
 	
-	public string adUnitID;
+	public string adUnitID;			// This will contain the ID for the generated platform
+	public string adUnitIDAndroid;
+	public string adUnitIDIOS;
 	
 	public Sizes adSize = Sizes.Banner;
 	public AdPosition adPosition = AdPosition.Top;
@@ -43,7 +45,16 @@ public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
 	void OnEnable(){
 		// Destroy the banner if exists (This can happen. I don't know why)
 		destroyAd();
-				
+		
+		// Select the proper Ad ID by build platform
+#if UNITY_ANDROID
+		adUnitID = adUnitIDAndroid;
+#elif UNITY_IPHONE
+		adUnitID = adUnitIDIOS;
+#else
+		adUnitID = string.Empty;
+#endif
+
 		// Create banner
 		bannerView = new BannerView(adUnitID, getAdSize(), adPosition);
 		

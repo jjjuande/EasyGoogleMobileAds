@@ -15,7 +15,7 @@ using GoogleMobileAds.Api;
 public class EasyGoogleMobileAdsEditor : Editor {
 
 	private enum Item {
-		EDITOR_LANGUAGE, LANGUAGE, LANGUAGE_HINT, BASE_SETTINGS, AD_UNIT_ID, AD_UNIT_ID_HINT, VISUAL_SETTINGS, AD_SIZE, AD_SIZE_HINT, POSITION, POSITION_HINT,
+		EDITOR_LANGUAGE, LANGUAGE, LANGUAGE_HINT, BASE_SETTINGS, AD_UNIT_ID_ANDROID, AD_UNIT_ID_IOS, AD_UNIT_ID_HINT_ANDROID, AD_UNIT_ID_HINT_IOS, VISUAL_SETTINGS, AD_SIZE, AD_SIZE_HINT, POSITION, POSITION_HINT,
 		CUSTOM_SIZE, CUSTOM_SIZE_HINT, WIDTH, WIDTH_HINT, HEIGHT, HEIGHT_HINT, FOR_TESTING, FOR_TESTING_HINT,
 		USE_EMULATOR_FOR_TESTING, USE_EMULATOR_FOR_TESTING_HINT, TEST_DEVICE, TEST_DEVICE_HINT, REMOVE,
 		ADD_TEST_DEVICE_ID, TARGET_SETTINGS, GENDER, GENDER_HINT, KEYWORDS, KEYWORDS_HINT, ABOUT_TITLE, ABOUT_DESC
@@ -29,8 +29,10 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.LANGUAGE, "Language"},
 				{Item.LANGUAGE_HINT, "Language for this component editor.\nIt doesn't affect to the Ad in the game."},
 				{Item.BASE_SETTINGS, "Base Settings"}, 
-				{Item.AD_UNIT_ID, "Ad unit ID"}, 
-				{Item.AD_UNIT_ID_HINT, "Ad unit ID generated from AdMob.\nIt looks like this:\nca-app-pub-6951234567896290/2123456789"},
+				{Item.AD_UNIT_ID_ANDROID, "Ad unit ID (Android)"}, 
+				{Item.AD_UNIT_ID_HINT_ANDROID, "Ad unit ID generated from AdMob.\nIt looks like this:\nca-app-pub-6951234567896290/2123456789"},
+				{Item.AD_UNIT_ID_IOS, "Ad unit ID (iOS)"}, 
+				{Item.AD_UNIT_ID_HINT_IOS, "Ad unit ID generated from AdMob.\nIt looks like this:\nca-app-pub-6951234567896290/2123456789"},				
 				{Item.VISUAL_SETTINGS, "Visual Settings"}, 
 				{Item.AD_SIZE, "Type"},
 				{Item.AD_SIZE_HINT, "Banner: Phones & Tablets (320x50)\nIABBanner: Tablets Only (468x60)\nLeaderboard: Tablets Only (720x90)\nMediumRectangle: Phones & Tablets (300x250)\nSmartBanner: Phones & Tablets (Variable)"}, 
@@ -65,8 +67,10 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.LANGUAGE, "Idioma"},
 				{Item.LANGUAGE_HINT, "Idioma para este componente.\nNo afectará al anuncio dentro del juego."},				
 				{Item.BASE_SETTINGS, "Ajustes Principales"}, 
-				{Item.AD_UNIT_ID, "Id del bloque de anuncios"}, 
-				{Item.AD_UNIT_ID_HINT, "Id del bloque de anuncios generado desde AdMob.\nSe parece a esto:\nca-app-pub-6951234567896290/2123456789"},
+				{Item.AD_UNIT_ID_ANDROID, "Id del bloque de anuncios (Android)"}, 
+				{Item.AD_UNIT_ID_HINT_ANDROID, "Id del bloque de anuncios generado desde AdMob.\nSe parece a esto:\nca-app-pub-6951234567896290/2123456789"},
+				{Item.AD_UNIT_ID_IOS, "Id del bloque de anuncios (iOS)"}, 
+				{Item.AD_UNIT_ID_HINT_IOS, "Id del bloque de anuncios generado desde AdMob.\nSe parece a esto:\nca-app-pub-6951234567896290/2123456789"},
 				{Item.VISUAL_SETTINGS, "Ajustes Visuales"}, 
 				{Item.AD_SIZE, "Tipo"},
 				{Item.AD_SIZE_HINT, "Banner: Teléfonos y Tablets (320x50)\nIABBanner: Sólo Tablets (468x60)\nLeaderboard: Sólo Tablets (720x90)\nMediumRectangle: Teléfonos y Tablets (300x250)\nSmartBanner: Teléfonos y Tablets (Variable)"}, 
@@ -98,7 +102,8 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	
 	private Dictionary<Item, string> selectedLanguage;
 	
-	SerializedProperty adUnitID;
+	SerializedProperty adUnitIDAndroid;
+	SerializedProperty adUnitIDIOS;
 	SerializedProperty editorLanguage;
 	SerializedProperty adSize;
 	SerializedProperty adPosition;
@@ -111,7 +116,8 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	SerializedProperty keywords;	
 	
 	void OnEnable(){
-		adUnitID = serializedObject.FindProperty("adUnitID");
+		adUnitIDAndroid = serializedObject.FindProperty("adUnitIDAndroid");
+		adUnitIDIOS = serializedObject.FindProperty("adUnitIDIOS");
 		editorLanguage = serializedObject.FindProperty("editorLanguage");
 		adSize = serializedObject.FindProperty("adSize");
 		adPosition = serializedObject.FindProperty("adPosition");
@@ -137,8 +143,10 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	
 		GUILayout.Label(getText(Item.BASE_SETTINGS), EditorStyles.boldLabel);
 		
-		EditorGUILayout.LabelField(new GUIContent(getText(Item.AD_UNIT_ID), getText(Item.AD_UNIT_ID_HINT)));
-		adUnitID.stringValue = EditorGUILayout.TextField(adUnitID.stringValue);
+		EditorGUILayout.LabelField(new GUIContent(getText(Item.AD_UNIT_ID_ANDROID), getText(Item.AD_UNIT_ID_HINT_ANDROID)));
+		adUnitIDAndroid.stringValue = EditorGUILayout.TextField(adUnitIDAndroid.stringValue);
+		EditorGUILayout.LabelField(new GUIContent(getText(Item.AD_UNIT_ID_IOS), getText(Item.AD_UNIT_ID_HINT_IOS)));
+		adUnitIDIOS.stringValue = EditorGUILayout.TextField(adUnitIDIOS.stringValue);
 		EditorGUILayout.Space();
 		
 		GUILayout.Label (getText(Item.VISUAL_SETTINGS), EditorStyles.boldLabel);
