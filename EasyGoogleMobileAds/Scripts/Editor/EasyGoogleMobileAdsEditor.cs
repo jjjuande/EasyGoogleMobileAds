@@ -93,7 +93,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.TARGET_SETTINGS, "Ajustes de Audiencia"}, 
 				{Item.GENDER, "Género"},
 				{Item.GENDER_HINT, "El Género para el que este juego está destinado.\n\nMALE para masculino\nFEMALE para femenino\nUNKNOWN para ambos."}, 
-				{Item.KEYWORDS, "Palabras clave"},		
+				{Item.KEYWORDS, "Palabras clave (separadas por coma)"},		
 				{Item.KEYWORDS_HINT, "Palabras clave relacionadas con el juego separadas por comas."},
 				{Item.ABOUT_TITLE, "Sobre este componente"},	
 				{Item.ABOUT_DESC, "https://www.youtube.com/juande"},	
