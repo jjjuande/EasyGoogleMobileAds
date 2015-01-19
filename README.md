@@ -4,9 +4,13 @@ Prefab que permite colocar banners de Admob en Unity sin escribir una sola líne
 
 ## Descarga ##
 
-Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.3/EasyGoogleMobileAds-0.9.3.unitypackage).
+Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.4/EasyGoogleMobileAds-0.9.4.unitypackage).
 
 ## Resumen de uso ##
+
+**Importante:** Para que este prefab funcione, tienes que instalar previamente el plugin de [Google Mobile Ads] (https://github.com/googleads/googleads-mobile-plugins/tree/master/unity) siguiendo las instrucciones de la página de ese proyecto.
+
+### Banners ###
 
 Para hacer que aparezca un banner en una determinada escena, sólo tienes que colocar el prefab **EasyGoogleMobileAds** en la jerarquía de objetos de esa escena.
 
@@ -16,7 +20,23 @@ Después sólo tendrás que configurarlo en el inspector de Unity. Para que func
 
 ![](Images/Editor.png)
 
-**Importante:** Para que este prefab funcione, tienes que instalar previamente el plugin de [Google Mobile Ads] (https://github.com/googleads/googleads-mobile-plugins/tree/master/unity) siguiendo las instrucciones de la página de ese proyecto.
+### Intersticiales ###
+
+Recomiendo establecer los IDs de dispositivos de prueba nada más iniciarse tu juego. 
+_(Por ejemplo, en el Start de la cámara de la escena inicial)_
+
+    string[] testDeviceIDs = new string[]{"E92E9A6745B85439C2EA180AB0010A87"};
+    EasyGoogleMobileAds.GetInterstitialManager().SetTestDevices(true, testDeviceIDs);
+
+Justo después de las líneas anteriores, usa la siguiente para preparar el intersticial pasándole tu adUnitID. 
+_(Se iniciará la descarga del anuncio que se mostrará.)_
+
+    EasyGoogleMobileAds.GetInterstitialManager().PrepareInterstitial("ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX");
+
+Cada vez que quieras mostrar el insterticial, ejecuta la siguiente línea.
+_(Una vez mostrado, se iniciará la descarga del siguiente anuncio.)_
+
+    EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
 
 ## Licencia de uso ##
 
