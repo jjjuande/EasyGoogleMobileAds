@@ -33,8 +33,8 @@ _(Se iniciará la descarga del anuncio que se mostrará.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().PrepareInterstitial("ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX");
 
-Cada vez que quieras mostrar el insterticial, ejecuta la siguiente línea.
-_(Una vez mostrado, se iniciará la descarga del siguiente anuncio.)_
+Usa la siguiente línea cada vez que quieras mostrar el insterticial.
+_(Esta línea no hace nada mientras no se haya terminado de descargar el anuncio y esté disponible. Una vez mostrado, se iniciará la descarga del siguiente anuncio que se mostrará.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
 
