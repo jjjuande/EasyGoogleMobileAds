@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using GoogleMobileAds.Api;
 
-[CustomEditor(typeof(EasyGoogleMobileAdsBehaviour))]
+[CustomEditor(typeof(EasyGoogleMobileAds))]
 public class EasyGoogleMobileAdsEditor : Editor {
 
 	private enum Item {
@@ -23,7 +23,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 
 	Dictionary<string, Dictionary<Item, string>> text = new Dictionary<string, Dictionary<Item, string>>
 	{{
-		EasyGoogleMobileAdsBehaviour.Languages.English.ToString(), new Dictionary<Item, string> 
+		EasyGoogleMobileAds.Languages.English.ToString(), new Dictionary<Item, string> 
 		{
 				{Item.EDITOR_LANGUAGE, "Editor Language"},
 				{Item.LANGUAGE, "Language"},
@@ -61,7 +61,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.ABOUT_DESC, "https://www.youtube.com/juande"},	
 		}
 	},{
-		EasyGoogleMobileAdsBehaviour.Languages.Español.ToString(), new Dictionary<Item, string>
+		EasyGoogleMobileAds.Languages.Español.ToString(), new Dictionary<Item, string>
 		{
 				{Item.EDITOR_LANGUAGE, "Idioma del Editor"}, 
 				{Item.LANGUAGE, "Idioma"},
@@ -134,11 +134,11 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	
 		serializedObject.Update ();
 		
-		EasyGoogleMobileAdsBehaviour ads = (EasyGoogleMobileAdsBehaviour)target;
+		EasyGoogleMobileAds ads = (EasyGoogleMobileAds)target;
 		selectedLanguage = text[editorLanguage.enumNames[editorLanguage.enumValueIndex]];
 
 		GUILayout.Label(getText(Item.EDITOR_LANGUAGE), EditorStyles.boldLabel);
-		editorLanguage.enumValueIndex = (int)(EasyGoogleMobileAdsBehaviour.Languages)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.LANGUAGE), getText(Item.LANGUAGE_HINT)), (EasyGoogleMobileAdsBehaviour.Languages) Enum.Parse(typeof(EasyGoogleMobileAdsBehaviour.Languages), editorLanguage.enumNames[editorLanguage.enumValueIndex]));
+		editorLanguage.enumValueIndex = (int)(EasyGoogleMobileAds.Languages)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.LANGUAGE), getText(Item.LANGUAGE_HINT)), (EasyGoogleMobileAds.Languages) Enum.Parse(typeof(EasyGoogleMobileAds.Languages), editorLanguage.enumNames[editorLanguage.enumValueIndex]));
 		EditorGUILayout.Space();
 	
 		GUILayout.Label(getText(Item.BASE_SETTINGS), EditorStyles.boldLabel);
@@ -151,7 +151,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 		
 		GUILayout.Label (getText(Item.VISUAL_SETTINGS), EditorStyles.boldLabel);
 		
-		adSize.enumValueIndex = (int)(EasyGoogleMobileAdsBehaviour.Sizes)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.AD_SIZE), getText(Item.AD_SIZE_HINT)), (EasyGoogleMobileAdsBehaviour.Sizes) Enum.Parse(typeof(EasyGoogleMobileAdsBehaviour.Sizes), adSize.enumNames[adSize.enumValueIndex]));
+		adSize.enumValueIndex = (int)(EasyGoogleMobileAds.Sizes)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.AD_SIZE), getText(Item.AD_SIZE_HINT)), (EasyGoogleMobileAds.Sizes) Enum.Parse(typeof(EasyGoogleMobileAds.Sizes), adSize.enumNames[adSize.enumValueIndex]));
 		adPosition.enumValueIndex = (int)(AdPosition)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.POSITION), getText(Item.POSITION_HINT)), (AdPosition) Enum.Parse(typeof(AdPosition), adPosition.enumNames[adPosition.enumValueIndex]));
 
 		customSize.boolValue = EditorGUILayout.BeginToggleGroup(new GUIContent(getText(Item.CUSTOM_SIZE), getText(Item.CUSTOM_SIZE_HINT)), customSize.boolValue);

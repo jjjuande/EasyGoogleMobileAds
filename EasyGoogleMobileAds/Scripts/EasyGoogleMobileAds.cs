@@ -9,7 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GoogleMobileAds.Api;
 
-public class EasyGoogleMobileAdsBehaviour : MonoBehaviour {
+public class EasyGoogleMobileAds : MonoBehaviour {
 	
 	public enum Languages
 	{
