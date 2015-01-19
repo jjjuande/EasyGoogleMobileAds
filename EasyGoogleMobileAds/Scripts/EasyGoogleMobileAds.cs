@@ -133,4 +133,15 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 		return result;
 	}	
 
+	// Interstitial support
+
+	private static InterstitialManager interstitialManager;
+	
+	public static InterstitialManager GetInterstitialManager(){
+		if (EasyGoogleMobileAds.interstitialManager == null) {
+			EasyGoogleMobileAds.interstitialManager = new InterstitialManager();
+		}
+		return EasyGoogleMobileAds.interstitialManager;
+	}
+
 }
