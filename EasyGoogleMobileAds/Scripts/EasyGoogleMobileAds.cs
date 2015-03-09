@@ -4,6 +4,7 @@
 // incluyas visiblemente en lo que hagas, la URL de mi canal de Youtube: https://www.youtube.com/juande
 // Pagina del proyecto: https://github.com/jjjuande/EasyGoogleMobileAds
 
+using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -64,7 +65,15 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 
 		// Create banner
 		bannerView = new BannerView(adUnitID, getAdSize(), adPosition);
-		
+
+		// Register for events
+		bannerView.AdLoaded += HandleAdLoaded;
+		bannerView.AdFailedToLoad += HandleAdFailedToLoad;
+		bannerView.AdOpened += HandleAdOpened;
+		bannerView.AdClosing += HandleAdClosing;
+		bannerView.AdClosed += HandleAdClosed;
+		bannerView.AdLeftApplication += HandleAdLeftApplication;
+
 		// Load the banner with the request.
 		bannerView.LoadAd(getAdRequest());
 	}
@@ -154,6 +163,44 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 			EasyGoogleMobileAds.interstitialManager = new InterstitialManager();
 		}
 		return EasyGoogleMobileAds.interstitialManager;
+	}
+
+	// Events support
+
+	public void HandleAdLoaded(object sender, EventArgs args)
+	{
+		// Called when an ad request has successfully loaded.
+		SendMessage ("OnAdLoaded", SendMessageOptions.DontRequireReceiver);
+	}
+
+	public void HandleAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+	{
+		// Called when an ad request failed to load.
+		SendMessage ("OnAdFailedToLoad", args.Message, SendMessageOptions.DontRequireReceiver);
+	}
+
+	public void HandleAdOpened(object sender, EventArgs args)
+	{
+		// Called when an ad is clicked.
+		SendMessage ("OnAdOpened", SendMessageOptions.DontRequireReceiver);
+	}
+
+	public void HandleAdClosing(object sender, EventArgs args)
+	{
+		// Called when the user is about to return to the app after an ad click.
+		SendMessage ("OnAdClosing", SendMessageOptions.DontRequireReceiver);
+	}
+
+	public void HandleAdClosed(object sender, EventArgs args)
+	{
+		// Called when the user returned from the app after an ad click.
+		SendMessage ("OnAdClosed", SendMessageOptions.DontRequireReceiver);
+	}
+
+	public void HandleAdLeftApplication(object sender, EventArgs args)
+	{
+		// Called when the ad click caused the user to leave the application.
+		SendMessage ("OnAdLeftApplication", SendMessageOptions.DontRequireReceiver);
 	}
 
 }
