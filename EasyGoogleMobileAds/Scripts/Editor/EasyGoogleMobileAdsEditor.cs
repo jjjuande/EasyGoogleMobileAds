@@ -133,8 +133,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	override public void OnInspectorGUI () {
 	
 		serializedObject.Update ();
-		
-		EasyGoogleMobileAds ads = (EasyGoogleMobileAds)target;
+
 		selectedLanguage = text[editorLanguage.enumNames[editorLanguage.enumValueIndex]];
 
 		GUILayout.Label(getText(Item.EDITOR_LANGUAGE), EditorStyles.boldLabel);
@@ -155,7 +154,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 		adPosition.enumValueIndex = (int)(AdPosition)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.POSITION), getText(Item.POSITION_HINT)), (AdPosition) Enum.Parse(typeof(AdPosition), adPosition.enumNames[adPosition.enumValueIndex]));
 
 		customSize.boolValue = EditorGUILayout.BeginToggleGroup(new GUIContent(getText(Item.CUSTOM_SIZE), getText(Item.CUSTOM_SIZE_HINT)), customSize.boolValue);
-		if(ads.customSize){
+		if(customSize.boolValue){
 			EditorGUI.indentLevel++;
 			customWidth.intValue = EditorGUILayout.IntField(new GUIContent(getText(Item.WIDTH), getText(Item.WIDTH_HINT)), customWidth.intValue);
 			customHeight.intValue = EditorGUILayout.IntField(new GUIContent(getText(Item.HEIGHT), getText(Item.HEIGHT_HINT)), customHeight.intValue);
