@@ -20,6 +20,31 @@ Después sólo tendrás que configurarlo en el inspector de Unity. Para que func
 
 ![](Images/Editor.png)
 
+### Banners - Ocultar/Mostrar Banner ###
+
+El objeto **EasyGoogleMobileAds** hará que se muestre un banner de publicidad mientras este objeto permanezca activo en la jerarquía. Así que lo normal es que el banner permanezca activo durante toda la escena. Si durante algún momento se quisiera ocultar el banner sin tener que cambiar de escena, sólo habría que desactivar el objeto **EasyGoogleMobileAds**.
+
+    // Para desactivarlo
+    GameObject.Find("EasyGoogleMobileAds").SetActive(false);
+    // Para activarlo
+    GameObject.Find("EasyGoogleMobileAds").SetActive(true);
+ 
+### Banners - Interceptar eventos ###
+
+Puede haber veces en donde queramos ejecutar cierto código una vez que el banner se ha cargado, o si se le ha hecho clic en el mismo. Para ello, créate un nuevo script copiando el contenido del script _/Assets/EasyGoogleMobileAds/ExampleScripts/AdEventBehaviour.cs_ y añádelo como componente al objeto **EasyGoogleMobileAds**. Cada vez que ocurra un evento, se ejecutará el método correspondiente.
+
+Estos son los que no reciben ningún parámetro:
+* **OnAdLoaded**. El anuncio se ha terminado de cargar.
+* **OnAdOpened**. El usuario ha hecho clic en el anuncio.
+* **OnAdClosing**. El usuario está a punto de volver a la aplicación después de hacer clic en el anuncio.
+* **OnAdClosed**. El usuario vuelve a la aplicación después de hacer clic en el anuncio.
+* **OnAdLeftApplication**. Cuando el clic en el anuncio hace que el usuario deje la aplicación.
+
+Este es el único que recibe como parémtro *errorMessage* el mensaje de error:
+* **OnAdFailedToLoad**: Cuando ha ocurrido un error cargando el anuncio. Recuerda hacer un casting a string a la variable *errorMessage* antes de usarla.
+
+
+
 ### Intersticiales ###
 
 Recomiendo establecer los IDs de dispositivos de prueba nada más iniciarse tu juego. 
