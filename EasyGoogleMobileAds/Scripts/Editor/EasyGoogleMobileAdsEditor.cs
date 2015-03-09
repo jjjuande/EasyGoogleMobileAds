@@ -18,7 +18,8 @@ public class EasyGoogleMobileAdsEditor : Editor {
 		EDITOR_LANGUAGE, LANGUAGE, LANGUAGE_HINT, BASE_SETTINGS, AD_UNIT_ID_ANDROID, AD_UNIT_ID_IOS, AD_UNIT_ID_HINT_ANDROID, AD_UNIT_ID_HINT_IOS, VISUAL_SETTINGS, AD_SIZE, AD_SIZE_HINT, POSITION, POSITION_HINT,
 		CUSTOM_SIZE, CUSTOM_SIZE_HINT, WIDTH, WIDTH_HINT, HEIGHT, HEIGHT_HINT, FOR_TESTING, FOR_TESTING_HINT,
 		USE_EMULATOR_FOR_TESTING, USE_EMULATOR_FOR_TESTING_HINT, TEST_DEVICE, TEST_DEVICE_HINT, REMOVE,
-		ADD_TEST_DEVICE_ID, TARGET_SETTINGS, GENDER, GENDER_HINT, KEYWORDS, KEYWORDS_HINT, ABOUT_TITLE, ABOUT_DESC
+		ADD_TEST_DEVICE_ID, TARGET_SETTINGS, GENDER, GENDER_HINT, KEYWORDS, KEYWORDS_HINT, TAG_FOR_CHILD_DIRECTED_TREATMENT,
+		TAG_FOR_CHILD_DIRECTED_TREATMENT_HINT, ABOUT_TITLE, ABOUT_DESC
 	}
 
 	Dictionary<string, Dictionary<Item, string>> text = new Dictionary<string, Dictionary<Item, string>>
@@ -57,6 +58,8 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.GENDER_HINT, "Gender this game is aimed for\nSelect UNKNOWN for both genders."}, 
 				{Item.KEYWORDS, "Keywords"},		
 				{Item.KEYWORDS_HINT, "Comma separated keywords related to the game."},	
+				{Item.TAG_FOR_CHILD_DIRECTED_TREATMENT, "Tagging for COPPA"},
+				{Item.TAG_FOR_CHILD_DIRECTED_TREATMENT_HINT, "These are the values:\n\nNot Tagged (default) - No indication of the content treatment with respect to COPPA.\nTrue - Content treated as child-directed for purposes of COPPA.\nFalse - Content should not be treated as child-directed for purposes of COPPA.\n\nBy setting this tag (to True or False), you certify that this notification is accurate and you are authorized to act on behalf of the owner of the app. You understand that abuse of this setting may result in termination of your Google account."},
 				{Item.ABOUT_TITLE, "About this component"},	
 				{Item.ABOUT_DESC, "https://www.youtube.com/juande"},	
 		}
@@ -95,6 +98,8 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.GENDER_HINT, "El Género para el que este juego está destinado.\n\nMALE para masculino\nFEMALE para femenino\nUNKNOWN para ambos."}, 
 				{Item.KEYWORDS, "Palabras clave (separadas por coma)"},		
 				{Item.KEYWORDS_HINT, "Palabras clave relacionadas con el juego separadas por comas."},
+				{Item.TAG_FOR_CHILD_DIRECTED_TREATMENT, "Etiquetado COPPA"},
+				{Item.TAG_FOR_CHILD_DIRECTED_TREATMENT_HINT, "Estos son los valores:\n\nNot Tagged (recomendado) - No se indica cómo deben ser tratado el contenido.\nTrue - Contenido con tratamiento dirigido a niños.\nFalse - Contenido sin tratamiento dirigido a niños.\n\nEstableciendo el valor 'True' o 'False', certificas que esta categorización es correcta y que estás autorizado para actuar en nombre del dueño de la aplicación. Entiendes que abusar de este ajuste puede resultar en la terminación de tu cuenta de Google."},
 				{Item.ABOUT_TITLE, "Sobre este componente"},	
 				{Item.ABOUT_DESC, "https://www.youtube.com/juande"},	
 		}
@@ -114,6 +119,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	SerializedProperty testDevices;
 	SerializedProperty gender;
 	SerializedProperty keywords;	
+	SerializedProperty tagForChildDirectedTreatment;	
 	
 	void OnEnable(){
 		adUnitIDAndroid = serializedObject.FindProperty("adUnitIDAndroid");
@@ -128,6 +134,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 		testDevices = serializedObject.FindProperty("testDevices");
 		gender = serializedObject.FindProperty("gender");
 		keywords = serializedObject.FindProperty("keywords");
+		tagForChildDirectedTreatment = serializedObject.FindProperty("tagForChildDirectedTreatment");
 	}
 
 	override public void OnInspectorGUI () {
@@ -196,7 +203,8 @@ public class EasyGoogleMobileAdsEditor : Editor {
 	
 		gender.enumValueIndex = (int)(Gender)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.GENDER), getText(Item.GENDER_HINT)), (Gender) Enum.Parse(typeof(Gender), gender.enumNames[gender.enumValueIndex]));
 		keywords.stringValue = EditorGUILayout.TextField(new GUIContent(getText(Item.KEYWORDS), getText(Item.KEYWORDS_HINT)), keywords.stringValue);
-		
+		tagForChildDirectedTreatment.enumValueIndex = (int)(EasyGoogleMobileAds.TagForChildDirectedTreatment)EditorGUILayout.EnumPopup(new GUIContent(getText(Item.TAG_FOR_CHILD_DIRECTED_TREATMENT), getText(Item.TAG_FOR_CHILD_DIRECTED_TREATMENT_HINT)), (EasyGoogleMobileAds.TagForChildDirectedTreatment) Enum.Parse(typeof(EasyGoogleMobileAds.TagForChildDirectedTreatment), tagForChildDirectedTreatment.enumNames[tagForChildDirectedTreatment.enumValueIndex]));
+
 		EditorGUILayout.Space();
 		GUILayout.Label (getText(Item.ABOUT_TITLE), EditorStyles.boldLabel);
 		GUILayout.Label (getText(Item.ABOUT_DESC));

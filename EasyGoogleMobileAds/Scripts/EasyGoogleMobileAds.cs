@@ -20,6 +20,11 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 	{
 		Banner, IABBanner, Leaderboard, MediumRectangle, SmartBanner
 	}
+
+	public enum TagForChildDirectedTreatment
+	{
+		NotTagged, True, False
+	}
 	
 	public Languages editorLanguage = Languages.English;
 	
@@ -39,6 +44,8 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 	
 	public string keywords = string.Empty;
 	public Gender gender = Gender.Unknown;
+
+	public TagForChildDirectedTreatment tagForChildDirectedTreatment = TagForChildDirectedTreatment.NotTagged;
 	
 	public BannerView bannerView;
 	
@@ -103,6 +110,11 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 		// Gender
 		if(gender != Gender.Unknown) 
 			requestBuilder.SetGender(gender);
+
+		// Tag for child directed treatment
+		if (tagForChildDirectedTreatment != TagForChildDirectedTreatment.NotTagged) {
+			requestBuilder.TagForChildDirectedTreatment (tagForChildDirectedTreatment == TagForChildDirectedTreatment.True);
+		}
 		
 		return requestBuilder.Build();
 	}
