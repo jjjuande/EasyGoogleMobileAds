@@ -24,10 +24,13 @@ Después sólo tendrás que configurarlo en el inspector de Unity. Para que func
 
 El objeto **EasyGoogleMobileAds** hará que se muestre un banner de publicidad mientras este objeto permanezca activo en la jerarquía. Así que lo normal es que el banner permanezca activo durante toda la escena. Si durante algún momento se quisiera ocultar el banner sin tener que cambiar de escena, sólo habría que desactivar el objeto **EasyGoogleMobileAds**.
 
+    // El código siguiente supone que "banner" está 
+    // referenciando al objeto EasyGoogleMobileAds
+    ...
     // Para desactivarlo
-    GameObject.Find("EasyGoogleMobileAds").SetActive(false);
+    banner.SetActive(false);
     // Para activarlo
-    GameObject.Find("EasyGoogleMobileAds").SetActive(true);
+    banner.SetActive(true);
  
 ### Banners - Interceptar eventos ###
 
