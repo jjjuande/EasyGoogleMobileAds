@@ -14,6 +14,9 @@ public class InterstitialManager {
 
 	private bool useEmulatorAsATestDevice;
 	private string[] testDeviceIDs;
+	private string[] keywords;
+	private GoogleMobileAds.Api.Gender? gender;
+	private bool? childDirectedTreatment;
 
 	private object firstKey;
 
@@ -22,21 +25,43 @@ public class InterstitialManager {
 		this.testDeviceIDs = null;
 	}
 
+	/**
+	 * This call will replace the current test device IDs list.
+	 **/
 	public void SetTestDevices(bool useEmulatorAsATestDevice, string[] testDeviceIDs){
 		this.useEmulatorAsATestDevice = useEmulatorAsATestDevice;
 		this.testDeviceIDs = testDeviceIDs;
 	}
 
+	/**
+	 * This call will replace the current keywords list.
+	 **/
+	public void SetKeywords(string[] keywords){
+		this.keywords = keywords;
+	}
+
+	public void SetGender(GoogleMobileAds.Api.Gender gender){
+		this.gender = gender;
+	}
+
+	public void TagForChildDirectedTreatment(bool childDirectedTreatment){
+		this.childDirectedTreatment = childDirectedTreatment;
+	}
+
+	private Interstitial CreateInterstitial(string adUnitID){
+		return new Interstitial (adUnitID, useEmulatorAsATestDevice, testDeviceIDs, keywords, gender, childDirectedTreatment);
+	}
+
 	public void PrepareInterstitial(string adUnitID){
 		if(!interstitials.ContainsKey(adUnitID)){
-			interstitials [adUnitID] = new Interstitial (adUnitID, useEmulatorAsATestDevice, testDeviceIDs);
+			interstitials [adUnitID] = CreateInterstitial(adUnitID);
 			if(firstKey==null) firstKey = adUnitID;
 		}
 	}
 
 	public void PrepareInterstitial(string adUnitID, object key){
 		if(!interstitials.ContainsKey(key)){
-			interstitials[key] = new Interstitial (adUnitID, useEmulatorAsATestDevice, testDeviceIDs);
+			interstitials[key] = CreateInterstitial(adUnitID);
 			if(firstKey==null) firstKey = key;
 		}
 	}

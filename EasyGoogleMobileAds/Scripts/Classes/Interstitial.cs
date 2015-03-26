@@ -12,14 +12,20 @@ public class Interstitial {
 	string adUnitID;
 	bool useEmulatorAsATestDevice;
 	string[] testDeviceIDs;
+	string[] keywords;
+	GoogleMobileAds.Api.Gender? gender;
+	bool? childDirectedTreatment;
 	InterstitialAd interstitial;
 	
 	bool failedLoading;
 
-	public Interstitial(string adUnitID, bool useEmulatorAsATestDevice, string[] testDeviceIDs){
+	public Interstitial(string adUnitID, bool useEmulatorAsATestDevice, string[] testDeviceIDs, string[] keywords, GoogleMobileAds.Api.Gender? gender, bool? childDirectedTreatment){
 		this.adUnitID = adUnitID;
 		this.useEmulatorAsATestDevice = useEmulatorAsATestDevice;
 		this.testDeviceIDs = testDeviceIDs;
+		this.keywords = keywords;
+		this.gender = gender;
+		this.childDirectedTreatment = childDirectedTreatment;
 		BuildInterstitial ();
 	}
 
@@ -36,6 +42,17 @@ public class Interstitial {
 			foreach(string testDeviceID in testDeviceIDs){
 				builder.AddTestDevice(testDeviceID);
 			}
+		}
+		if (keywords != null && keywords.Length > 0) {
+			foreach (string keyword in keywords) {
+				builder.AddKeyword (keyword);
+			}
+		}
+		if (gender.HasValue) {
+			builder.SetGender (gender.Value);
+		}
+		if (childDirectedTreatment.HasValue) {
+			builder.TagForChildDirectedTreatment (childDirectedTreatment.Value);
 		}
 		AdRequest request = builder.Build();
 		interstitial.LoadAd(request);
