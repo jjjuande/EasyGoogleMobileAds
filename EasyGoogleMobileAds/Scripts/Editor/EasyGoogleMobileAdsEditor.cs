@@ -38,7 +38,7 @@ public class EasyGoogleMobileAdsEditor : Editor {
 				{Item.AD_SIZE, "Type"},
 				{Item.AD_SIZE_HINT, "Banner: Phones & Tablets (320x50)\nIABBanner: Tablets Only (468x60)\nLeaderboard: Tablets Only (720x90)\nMediumRectangle: Phones & Tablets (300x250)\nSmartBanner: Phones & Tablets (Variable)"}, 
 				{Item.POSITION, "Position"},
-				{Item.POSITION_HINT, "Set the banner position on the screen."}, 
+				{Item.POSITION_HINT, "The banner position on the screen."}, 
 				{Item.CUSTOM_SIZE, "Custom size"},
 				{Item.CUSTOM_SIZE_HINT, "Overrides the Type selection above."}, 
 				{Item.WIDTH, "Width"},
