@@ -67,12 +67,12 @@ Si quieres, también puedes añadir (nada más iniciarse tu juego) los parámetr
     EasyGoogleMobileAds.GetInterstitialManager ().TagForChildDirectedTreatment (false);
     
 Justo después de las líneas anteriores (y también nada más iniciarse tu juego), usa la siguiente para preparar el intersticial pasándole tu adUnitID. 
-_(Se iniciará la descarga del anuncio que se mostrará.)_
+_(Se iniciará la descarga del anuncio a mostrar.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().PrepareInterstitial("ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX");
 
 Usa la siguiente línea cada vez que quieras mostrar el insterticial.
-_(Esta línea no hace nada mientras no se haya terminado de descargar el anuncio y esté disponible. Una vez mostrado, se iniciará automáticamente la descarga del siguiente anuncio que se mostrará.)_
+_(Esta línea no hace nada mientras no se haya terminado de descargar el anuncio y esté disponible. Una vez mostrado, se iniciará automáticamente la descarga del siguiente anuncio a mostrar.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
 
