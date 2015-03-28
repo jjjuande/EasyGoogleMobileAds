@@ -86,8 +86,4 @@ public class Interstitial {
 		}
 	}
 
-	public InterstitialAd getInterstitialAd(){
-		return this.interstitial;
-	}
-
 }
