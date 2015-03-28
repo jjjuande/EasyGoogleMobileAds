@@ -4,7 +4,7 @@ Prefab que permite colocar banners de Admob en Unity sin escribir una sola líne
 
 ## Descarga ##
 
-Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.7/EasyGoogleMobileAds-0.9.7.unitypackage).
+Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.8/EasyGoogleMobileAds-0.9.8.unitypackage).
 
 ## Resumen de uso ##
 
@@ -46,8 +46,6 @@ Estos son los que no reciben ningún parámetro:
 Este es el único que recibe como parémtro *errorMessage* el mensaje de error:
 * **OnAdFailedToLoad**: Cuando ha ocurrido un error cargando el anuncio. Recuerda hacer un casting a string a la variable *errorMessage* antes de usarla.
 
-
-
 ### Intersticiales ###
 
 Recomiendo establecer los IDs de dispositivos de prueba nada más iniciarse tu juego. 
@@ -75,6 +73,37 @@ Usa la siguiente línea cada vez que quieras mostrar el insterticial.
 _(Esta línea no hace nada mientras no se haya terminado de descargar el anuncio y esté disponible. Una vez mostrado, se iniciará automáticamente la descarga del siguiente anuncio a mostrar.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
+
+### Intersticiales - Interceptar eventos ###
+
+En los intersticiales tenemos los mismos eventos que en los banners:
+* **OnAdLoaded**. El anuncio se ha terminado de descargar.
+* **OnAdOpened**. Se ha mostrado el intersticial.
+* **OnAdClosing**. El usuario está a punto de volver a la aplicación después de ver el intersticial.
+* **OnAdClosed**. El usuario vuelve a la aplicación después de ver el intersticial.
+* **OnAdLeftApplication**. El  usuario hace clic en el intersticial.
+* **OnAdFailedToLoad**: Cuando ha ocurrido un error cargando el anuncio.
+
+Todo el código siguiente deberá ejecutarse después de haber llamado al _PrepareInterstitial_. Si se hace antes, obtendremos un _NullPointerException_.
+
+Para definir un bloque de código que se ejecute cuando se dé el evento _OnAdLoaded_:
+
+    EasyGoogleMobileAds.GetInterstitialManager().GetInterstitial().OnAdLoaded = 
+    delegate(){
+        // Aquí iría el código que querremos ejecutar cuando se de ese evento.
+        // ...
+    };
+
+El código anterior sirve para los eventos _OnAdLoaded_, _OnAdOpened_, _OnAdClosing_, _OnAdClosed_, _OnAdClosed_ y  _OnAdLeftApplication_. Sólo tendremos que reemplazar _OnAdLoaded_ con el nombre del evento que queremos. Repetiremos ese bloque para cada evento que vayamos a utilizar.
+
+Para definir un bloque de código que se ejecute en caso de error descargando el anuncio: 
+
+    EasyGoogleMobileAds.GetInterstitialManager().GetInterstitial().OnAdFailedToLoad = 
+    delegate(string mensaje){
+        // Aquí iría el código que querremos ejecutar cuando se de ese evento.
+        // Observa que en la variable "mensaje" tienes el mensaje de error.
+        // ...
+    };
 
 ## Licencia de uso ##
 
