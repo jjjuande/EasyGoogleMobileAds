@@ -37,14 +37,15 @@ El objeto **EasyGoogleMobileAds** hará que se muestre un banner de publicidad m
 Puede haber veces en donde queramos ejecutar cierto código una vez que el banner se ha cargado, o si se le ha hecho clic en el mismo. Para ello, créate un nuevo script copiando el contenido del script _/Assets/EasyGoogleMobileAds/ExampleScripts/AdEventBehaviour.cs_ y añádelo como componente al objeto **EasyGoogleMobileAds**. Cada vez que ocurra un evento, se ejecutará el método correspondiente.
 
 Estos son los que no reciben ningún parámetro:
-* **OnAdLoaded**. El anuncio se ha terminado de cargar.
+* **OnAdLoaded**. El anuncio se ha terminado de descargar y se ha mostrado. _(Si hemos configurado el banner para que cambie su contenido cada tanto tiempo, este evento saltará cada vez que se descargue y muestre un banner nuevo.)_
 * **OnAdOpened**. El usuario ha hecho clic en el anuncio.
-* **OnAdClosing**. El usuario está a punto de volver a la aplicación después de hacer clic en el anuncio.
-* **OnAdClosed**. El usuario vuelve a la aplicación después de hacer clic en el anuncio.
-* **OnAdLeftApplication**. Cuando el clic en el anuncio hace que el usuario deje la aplicación.
+* **OnAdLeftApplication**. Se ejecuta justo después del evento _OnAdOpened_, cuando el usuario ha hecho clic en el anuncio.
+* **OnAdClosing**. El usuario está a punto de volver al juego después de hacer clic en el anuncio.
+* **OnAdClosed**. El usuario vuelve al juego después de hacer clic en el anuncio.
 
-Este es el único que recibe como parémtro *errorMessage* el mensaje de error:
-* **OnAdFailedToLoad**: Cuando ha ocurrido un error cargando el anuncio. Recuerda hacer un casting a string a la variable *errorMessage* antes de usarla.
+
+Este es el único que recibe como parámetro *errorMessage*, que contendrá el mensaje de error:
+* **OnAdFailedToLoad**: Cuando ha ocurrido un error descargando el anuncio. Recuerda hacer un casting a _string_ a la variable *errorMessage* antes de usarla.
 
 ### Intersticiales ###
 
@@ -76,13 +77,13 @@ _(Esta línea no hace nada mientras no se haya terminado de descargar el anuncio
 
 ### Intersticiales - Interceptar eventos ###
 
-En los intersticiales tenemos los mismos eventos que en los banners:
-* **OnAdLoaded**. El anuncio se ha terminado de descargar.
+Aunque en los intersticiales tenemos los mismos eventos que en los banners, algunos no se refieren a lo mismo:
+* **OnAdLoaded**. El anuncio se ha terminado de descargar y está preparado para mostrarse. _(No se mostrará hasta que no se ejecute el método ShowInterstitial.)_
 * **OnAdOpened**. Se ha mostrado el intersticial.
-* **OnAdClosing**. El usuario está a punto de volver a la aplicación después de ver el intersticial.
-* **OnAdClosed**. El usuario vuelve a la aplicación después de ver el intersticial.
+* **OnAdClosing**. El usuario está a punto de volver al juego después de ver el intersticial.
+* **OnAdClosed**. El usuario vuelve al juego después de ver el intersticial.
 * **OnAdLeftApplication**. El  usuario hace clic en el intersticial.
-* **OnAdFailedToLoad**: Cuando ha ocurrido un error cargando el anuncio.
+* **OnAdFailedToLoad**: Cuando ha ocurrido un error descargando el anuncio.
 
 Todo el código siguiente deberá ejecutarse después de haber llamado al _PrepareInterstitial_. Si se hace antes, obtendremos un _NullPointerException_.
 
@@ -104,6 +105,10 @@ Para definir un bloque de código que se ejecute en caso de error descargando el
         // Observa que en la variable "mensaje" tienes el mensaje de error.
         // ...
     };
+
+## Aviso Importante ##
+
+Aunque se pueda detectar cuando el usuario hace clic en un anuncio, NO DEBEREMOS usar esto para incentivar los clics con monedas virtuales extra (o similar) por clic. Esta acción está prohibída por los términos de uso de AdMob.
 
 ## Licencia de uso ##
 
