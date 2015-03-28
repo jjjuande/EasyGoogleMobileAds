@@ -48,27 +48,20 @@ public class InterstitialManager {
 		this.childDirectedTreatment = childDirectedTreatment;
 	}
 
-	private Interstitial CreateInterstitial(string adUnitID){
-		return new Interstitial (adUnitID, useEmulatorAsATestDevice, testDeviceIDs, keywords, gender, childDirectedTreatment);
-	}
-
 	public void PrepareInterstitial(string adUnitID){
-		if(!interstitials.ContainsKey(adUnitID)){
-			interstitials [adUnitID] = CreateInterstitial(adUnitID);
-			if(firstKey==null) firstKey = adUnitID;
-		}
+		PrepareInterstitial(adUnitID, adUnitID);
 	}
 
 	public void PrepareInterstitial(string adUnitID, object key){
 		if(!interstitials.ContainsKey(key)){
-			interstitials[key] = CreateInterstitial(adUnitID);
+			interstitials[key] = new Interstitial (adUnitID, useEmulatorAsATestDevice, testDeviceIDs, keywords, gender, childDirectedTreatment);
 			if(firstKey==null) firstKey = key;
 		}
 	}
 
 	public void ShowInterstitial(){
 		if (firstKey != null) {
-			interstitials[firstKey].Show();
+			ShowInterstitial(firstKey);
 		}
 	}
 
