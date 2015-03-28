@@ -34,7 +34,7 @@ El objeto **EasyGoogleMobileAds** hará que se muestre un banner de publicidad m
  
 ### Banners - Interceptar eventos ###
 
-Puede haber veces en donde queramos ejecutar cierto código una vez que el banner se ha cargado, o si se le ha hecho clic en el mismo. Para ello, créate un nuevo script copiando el contenido del script _/Assets/EasyGoogleMobileAds/ExampleScripts/AdEventBehaviour.cs_ y añádelo como componente al objeto **EasyGoogleMobileAds**. Cada vez que ocurra un evento, se ejecutará el método correspondiente.
+Puede haber veces en donde queramos ejecutar cierto código una vez que el banner se ha cargado, o si se le ha hecho clic en el mismo. Para ello, créate un nuevo script copiando los métodos que necesites del script _/Assets/EasyGoogleMobileAds/ExampleScripts/AdEventBehaviour.cs_ y añádelo (el script creado) como componente al objeto **EasyGoogleMobileAds**. Cada vez que ocurra un evento, se ejecutará el método correspondiente.
 
 Estos son los que no reciben ningún parámetro:
 * **OnAdLoaded**. El anuncio se ha terminado de descargar y se ha mostrado. _(Si hemos configurado el banner para que cambie su contenido cada tanto tiempo, este evento saltará cada vez que se descargue y muestre un banner nuevo.)_
