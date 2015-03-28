@@ -75,20 +75,17 @@ public class InterstitialManager {
 	/**
 	* Will return null if it's called before PrepareInterstitial.
 	**/
-	public InterstitialAd GetInterstitialAd(){
-		return (firstKey != null) ? GetInterstitialAd(firstKey) : null;
+	public Interstitial GetInterstitial(){
+		return (firstKey != null) ? GetInterstitial(firstKey) : null;
 	}
 
 	/**
 	* Will return null if it's called before PrepareInterstitial
 	* or using a non-existing key.
 	**/
-	public InterstitialAd GetInterstitialAd(object key){
+	public Interstitial GetInterstitial(object key){
 		Interstitial result;
-		if (interstitials.TryGetValue (key, out result)) {
-			return result.getInterstitialAd();
-		} else {
-			return null;
-		}
+		interstitials.TryGetValue (key, out result);
+		return result;
 	}
 }
