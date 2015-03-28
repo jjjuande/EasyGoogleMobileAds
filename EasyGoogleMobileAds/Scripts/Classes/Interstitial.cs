@@ -85,4 +85,9 @@ public class Interstitial {
 			interstitial.Show();
 		}
 	}
+
+	public InterstitialAd getInterstitialAd(){
+		return this.interstitial;
+	}
+
 }
