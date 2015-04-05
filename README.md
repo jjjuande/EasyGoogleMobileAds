@@ -4,7 +4,7 @@ Prefab que permite colocar banners de Admob en Unity sin escribir una sola líne
 
 ## Descarga ##
 
-Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.8/EasyGoogleMobileAds-0.9.8.unitypackage).
+Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.9/EasyGoogleMobileAds-0.9.9.unitypackage).
 
 ## Resumen de uso ##
 
