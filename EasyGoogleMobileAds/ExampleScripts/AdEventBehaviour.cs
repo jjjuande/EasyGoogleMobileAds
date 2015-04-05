@@ -36,11 +36,11 @@ public class AdEventBehaviour : MonoBehaviour {
 
 	// Cuando ha ocurrido un error descargando el anuncio.
 	// Antes de usar el parametro, hazle un casting a string.
-	// string message = (string) errorMessage
+	// string message = (string) errorMessage;
 	// -
 	// Called when an ad request failed to load.
 	// Before using the parameter, cast it to a string.
-	// string message = (string) errorMessage
+	// string message = (string) errorMessage;
 	void OnAdFailedToLoad(object errorMessage)
 	{
 
