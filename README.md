@@ -118,4 +118,4 @@ Aunque se pueda detectar cuando el usuario hace clic en un anuncio, NO DEBEREMOS
 
 Para conocer todo sobre este prefab y el plugin oficial de Google, accede a [esta lista de reproducción](https://www.youtube.com/playlist?list=PLREdURb87ks2uIXmTOAVvnOz0JV2-ZwHH) de mi [canal de Youtube](https://www.youtube.com/juande).
 
-[![Ir a mi canal de Youtube](Images/CanalYoutube.png)](https://www.youtube.com/juande)
+[![Ir a mi canal de Youtube](Images/CanalYoutube.png)](https://www.youtube.com/playlist?list=PLREdURb87ks2uIXmTOAVvnOz0JV2-ZwHH)
