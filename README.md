@@ -116,6 +116,8 @@ Aunque se pueda detectar cuando el usuario hace clic en un anuncio, NO DEBEREMOS
 
 **EasyGoogleMobileAds** es *software libre*; puedes redistribuirlo y/o modificarlo bajo los términos de licencia MIT. Se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA. Para más información, léete el archivo LICENSE.
 
+En el caso de que encuentres algún bug, puedes comentarlo [aquí](https://github.com/jjjuande/EasyGoogleMobileAds/issues).
+
 ## Información más completa ##
 
 Para conocer todo sobre este prefab y el plugin oficial de Google, accede a [esta lista de reproducción](https://www.youtube.com/playlist?list=PLREdURb87ks2uIXmTOAVvnOz0JV2-ZwHH) de mi [canal de Youtube](https://www.youtube.com/juande).
