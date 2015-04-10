@@ -2,7 +2,7 @@
 
 Add a banner into any scene of you game without typing any code.
 
-View the [spanish](https://github.com/jjjuande/EasyGoogleMobileAds/blob/master/README.md) versión of this document.
+_[Ver la versión en español de este documento](https://github.com/jjjuande/EasyGoogleMobileAds/blob/master/README.md)._
 
 ## Descarga ##
 
