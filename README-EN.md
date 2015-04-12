@@ -54,8 +54,18 @@ The ID for the test devices must be set just when your game starts.
 
     string[] testDeviceIDs = new string[]{"E92E9A6745B85439C2EA180AB0010A87"};
     EasyGoogleMobileAds.GetInterstitialManager().SetTestDevices(true, testDeviceIDs);
+    
+The following code will initialize the interstitial with the given Ad Unit ID. You must add it just after the code above, and at the beggining of the game.  _(This will prepare the ad to be shown downloading it. It won't display any interstitial. Keep reading.)_
 
-It's not mandatory, but you can also set the ad targeting options as shown below. _(This code must also be run just when your game starts.)_
+    EasyGoogleMobileAds.GetInterstitialManager().PrepareInterstitial("ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX");
+
+Use this line **every time** you want to show the interstitial. _(This line won't do anything while there is no available ad to show. The ad needs some time to be downloaded between the call to Prepareinterstitial and ShowInterstitial, and between calls to ShowInterstitial. When the interstitial is shown, the next ad will be downloaded.)_
+
+    EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
+
+### Interstitials - Custom targeting ###
+
+It's not mandatory, but you can also set the ad targeting options as shown below. _(This code must also be run just when your game starts, and before calling PrepareInterstitial.)_
 
     // Adding keywords
     string[] keywords = new string[]{"ropa", "compras", "moda"};
@@ -65,14 +75,6 @@ It's not mandatory, but you can also set the ad targeting options as shown below
     // Set the tag for child directed treatment to false (or true)
     // If you don't know how this option must be used, don't use it.
     EasyGoogleMobileAds.GetInterstitialManager ().TagForChildDirectedTreatment (false);
-    
-The following code will initialize the interstitial with the given Ad Unit ID. You must add it just after the code above, and at the beggining of the game.  _(This will prepare the ad to be shown downloading it. It won't display any interstitial. Keep reading.)_
-
-    EasyGoogleMobileAds.GetInterstitialManager().PrepareInterstitial("ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX");
-
-Use this line **every time** you want to show the interstitial. _(This line won't do anything while there is no available ad to show. The ad needs some time to be downloaded between the call to Prepareinterstitial and ShowInterstitial, and between calls to ShowInterstitial. When the interstitial is shown, the next ad will be downloaded.)_
-
-    EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
 
 ### Intersticiales - Events ###
 
