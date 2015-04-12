@@ -56,16 +56,6 @@ _(Por ejemplo, en el Start de la cámara de la escena inicial)_
 
     string[] testDeviceIDs = new string[]{"E92E9A6745B85439C2EA180AB0010A87"};
     EasyGoogleMobileAds.GetInterstitialManager().SetTestDevices(true, testDeviceIDs);
-
-Si quieres, también puedes añadir (nada más iniciarse tu juego) los parámetros de segmentación para los anuncios de los intersticiales como se describe a continuación. _(No será obligatorio indicar ningún parámetro de los que se describen. Así que todo este siguiente bloque de código será opcional)_
-
-    // Añadimos las keywords que definen el contenido de la publicidad que se mostrara
-    string[] keywords = new string[]{"ropa", "compras", "moda"};
-    EasyGoogleMobileAds.GetInterstitialManager ().SetKeywords (keywords);
-    // Indicamos que la publicidad sea dirigida a hombres (por ejemplo)
-    EasyGoogleMobileAds.GetInterstitialManager ().SetGender (GoogleMobileAds.Api.Gender.Male);
-    // Indicamos que no se haga un trato especial para niños con la publicidad mostrada.
-    EasyGoogleMobileAds.GetInterstitialManager ().TagForChildDirectedTreatment (false);
     
 Justo después de las líneas anteriores (y también nada más iniciarse tu juego), usa la siguiente para preparar el intersticial pasándole tu adUnitID. 
 _(Se iniciará la descarga del anuncio a mostrar.)_
@@ -76,6 +66,18 @@ Usa la siguiente línea cada vez que quieras mostrar el insterticial.
 _(Esta línea no hace nada mientras no se haya terminado de descargar el anuncio y esté disponible. Una vez mostrado, se iniciará automáticamente la descarga del siguiente anuncio a mostrar.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().ShowInterstitial();
+
+### Intersticiales - Parámetros de segmentación ###
+
+Si quieres (no es obligatorio), también puedes añadir (nada más iniciarse tu juego y antes de llamar al _PrepareInterstitial_) los parámetros de segmentación para los anuncios de los intersticiales como se describe a continuación. _(No será obligatorio indicar ningún parámetro de los que se describen. Así que todo este siguiente bloque de código será opcional)_
+
+    // Añadimos las keywords que definen el contenido de la publicidad que se mostrara
+    string[] keywords = new string[]{"ropa", "compras", "moda"};
+    EasyGoogleMobileAds.GetInterstitialManager ().SetKeywords (keywords);
+    // Indicamos que la publicidad sea dirigida a hombres (por ejemplo)
+    EasyGoogleMobileAds.GetInterstitialManager ().SetGender (GoogleMobileAds.Api.Gender.Male);
+    // Indicamos que no se haga un trato especial para niños con la publicidad mostrada.
+    EasyGoogleMobileAds.GetInterstitialManager ().TagForChildDirectedTreatment (false);
 
 ### Intersticiales - Interceptar eventos ###
 
