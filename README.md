@@ -116,6 +116,8 @@ Aunque se pueda detectar cuando el usuario hace clic en un anuncio, NO DEBEREMOS
 
 ## Licencia de uso ##
 
+**EasyGoogleMobileAds** no tiene ninguna relación con Google.  Es un asset creado por un particular que funciona con el plugin oficial de Google Mobile Ads. Todas las marcas que aparecen son propiedad de sus respectivos dueños.
+
 **EasyGoogleMobileAds** es *software libre*; puedes redistribuirlo y/o modificarlo bajo los términos de licencia MIT. Se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA. Para más información, léete el archivo LICENSE.
 
 En el caso de que encuentres algún bug, puedes comentarlo [aquí](https://github.com/jjjuande/EasyGoogleMobileAds/issues).
