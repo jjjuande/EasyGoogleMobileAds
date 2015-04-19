@@ -4,7 +4,7 @@ Add a banner into any scene of you game without typing any code.
 
 _[Ver la versión en español de este documento](https://github.com/jjjuande/EasyGoogleMobileAds/blob/master/README.md)._
 
-## Descarga ##
+## Download ##
 
 Click [**here**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.10/EasyGoogleMobileAds-0.9.10.unitypackage) to download the latest version of this asset.
 
@@ -111,7 +111,9 @@ Here is the code for when there's an error downloading the ad. _(It's different 
 
 You **shouldn't** use the click events to give the users extra coins, digital goods or any advantage. Remember: You shouldn't encourage users to click on the ads.
 
-## Licencia de uso ##
+## Use license ##
+
+**EasyGoogleMobileAds** is not affiliated with Google. It just uses the official Google Mobile Ads Unity plugin. All product names, logos, and brands are property of their respective owners.
 
 **EasyGoogleMobileAds** is *free software*; You can distribute and/or modify it under the [MIT license terms](https://github.com/jjjuande/EasyGoogleMobileAds/blob/master/LICENSE). It's distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
