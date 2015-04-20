@@ -1,6 +1,6 @@
 # EasyGoogleMobileAds for Unity #
 
-Add a banner into any scene of you game without typing any code.
+Add a banner into any scene of your game without typing any code.
 
 _[Ver la versión en español de este documento](https://github.com/jjjuande/EasyGoogleMobileAds/blob/master/README.md)._
 
@@ -10,7 +10,7 @@ Click [**here**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/downlo
 
 ## Guide of use ##
 
-**Requirements:** For this asset to work, you should have correctly installed the [Google Mobile Ads](https://github.com/googleads/googleads-mobile-plugins/tree/master/unity) Unity plugin on your project.
+**Requirements:** For this asset to work, you should have correctly installed the [Google Mobile Ads](https://github.com/googleads/googleads-mobile-plugins/tree/master/unity) Unity plug-in on your project.
 
 ### Banners ###
 
@@ -36,7 +36,7 @@ The banner (enabled/disabled) state is related to the state of the **EasyGoogleM
  
 ### Banners - Events ###
 
-The events are useful when we want to run some code when something happens related to the banner. To do this: Create a new script, then copy all the events you are interested on, and add your code to these events. (You have an example script with all the available events on  _/Assets/EasyGoogleMobileAds/ExampleScripts/AdEventBehaviour.cs_.) To finish, add your script as a component to the **EasyGoogleMobileAds** game object. Every time an event happens, the propper method will be executed.
+The events are useful when we want to run some code when something happens related to the banner. To do this: Create a new script, then copy all the events you are interested on, and add your code to these events. (You have an example script with all the available events on  _/Assets/EasyGoogleMobileAds/ExampleScripts/AdEventBehaviour.cs_.) To finish, add your script as a component to the **EasyGoogleMobileAds** game object. Every time an event happens, the proper method will be executed.
 
 These method don't receive any parameter:
 * **OnAdLoaded**. Called when an ad request has successfully loaded.
@@ -46,7 +46,7 @@ These method don't receive any parameter:
 * **OnAdClosed**. Called when the user returned from the app after an ad click.
 
 This is the only method that receives a parameter: *errorMessage*, which will contain the error message.
-* **OnAdFailedToLoad**: Called when an ad request failed to load. Remember to cast *errorMessage* to _string_ befor using it.
+* **OnAdFailedToLoad**: Called when an ad request failed to load. Remember to cast *errorMessage* to _string_ before using it.
 
 ### Interstitials ###
 
@@ -55,7 +55,7 @@ The ID for the test devices must be set just when your game starts.
     string[] testDeviceIDs = new string[]{"E92E9A6745B85439C2EA180AB0010A87"};
     EasyGoogleMobileAds.GetInterstitialManager().SetTestDevices(true, testDeviceIDs);
     
-The following code will initialize the interstitial with the given Ad Unit ID. You must add it just after the code above, and at the beggining of the game.  _(This will prepare the ad to be shown downloading it. It won't display any interstitial. Keep reading.)_
+The following code will initialize the interstitial with the given Ad Unit ID. You must add it just after the code above, and at the beginning of the game.  _(This will prepare the ad to be shown downloading it. It won't display any interstitial. Keep reading.)_
 
     EasyGoogleMobileAds.GetInterstitialManager().PrepareInterstitial("ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX");
 
@@ -86,7 +86,7 @@ These are the events fired by the interstitials:
 * **OnAdLeftApplication**. The user clicks on the interstitial ad.
 * **OnAdFailedToLoad**: There's been an error downloading the ad to be displayed.
 
-The following code must be executed after calling _PrepareInterstitial_. If you execute it before, you'll get a _NullPointerException_.
+The following code must be executed after calling _PrepareInterstitial_. If you execute it before, you will get a _NullPointerException_.
 
 This is an example of code block that gets executed when the event _OnAdLoaded_ is fired:
 
@@ -119,8 +119,8 @@ You **shouldn't** use the click events to give the users extra coins, digital go
 
 The source code is freely available from GitHub. You may want to check it out and download latest release. In case you find a bug, you can report it [here](https://github.com/jjjuande/EasyGoogleMobileAds/issues).
 
-## For more information (in spanish) ##
+## For more information (in Spanish) ##
 
-I made a full course (in spanish) about AdMob and this asset on [this playlist](https://www.youtube.com/playlist?list=PLREdURb87ks2uIXmTOAVvnOz0JV2-ZwHH) from my [Youtube channel](https://www.youtube.com/juande).
+I made a full course (in Spanish) about AdMob and this asset on [this playlist](https://www.youtube.com/playlist?list=PLREdURb87ks2uIXmTOAVvnOz0JV2-ZwHH) from my [Youtube channel](https://www.youtube.com/juande).
 
 [![Go to the playlist](Images/CanalYoutube.png)](https://www.youtube.com/playlist?list=PLREdURb87ks2uIXmTOAVvnOz0JV2-ZwHH)
