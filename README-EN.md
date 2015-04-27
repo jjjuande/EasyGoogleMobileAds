@@ -81,9 +81,9 @@ It's not mandatory, but you can also set the ad targeting options as shown below
 These are the events fired by the interstitials:
 * **OnAdLoaded**. The ad is finished downloading and is ready to be shown. _(It won't be shown until the method ShowInterstitial is executed.)_
 * **OnAdOpened**. The interstitial is shown.
+* **OnAdLeftApplication**. The user clicks on the interstitial ad.
 * **OnAdClosing**. The user is about to return the game after the inerstitial is shown.
 * **OnAdClosed**. The user returns to the game after the interstitial is shown.
-* **OnAdLeftApplication**. The user clicks on the interstitial ad.
 * **OnAdFailedToLoad**: There's been an error downloading the ad to be displayed.
 
 The following code must be executed after calling _PrepareInterstitial_. If you execute it before, you will get a _NullPointerException_.

@@ -84,9 +84,9 @@ Si quieres (no es obligatorio), también puedes añadir (nada más iniciarse tu 
 Aunque en los intersticiales tenemos los mismos eventos que en los banners, algunos no se refieren a lo mismo:
 * **OnAdLoaded**. El anuncio se ha terminado de descargar y está preparado para mostrarse. _(No se mostrará hasta que no se ejecute el método ShowInterstitial.)_
 * **OnAdOpened**. Se ha mostrado el intersticial.
+* **OnAdLeftApplication**. El  usuario hace clic en el intersticial.
 * **OnAdClosing**. El usuario está a punto de volver al juego después de ver el intersticial.
 * **OnAdClosed**. El usuario vuelve al juego después de ver el intersticial.
-* **OnAdLeftApplication**. El  usuario hace clic en el intersticial.
 * **OnAdFailedToLoad**: Cuando ha ocurrido un error descargando el anuncio.
 
 Todo el código siguiente deberá ejecutarse después de haber llamado al _PrepareInterstitial_. Si se hace antes, obtendremos un _NullPointerException_.
