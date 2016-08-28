@@ -12,6 +12,8 @@ Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/re
 
 **Importante:** Para que este prefab funcione, tienes que instalar previamente el plugin de [Google Mobile Ads] (https://github.com/googleads/googleads-mobile-unity) siguiendo las instrucciones de la página de ese proyecto.
 
+Si prefieres la información en español, puedes utilizar esta pequeña [guía rápida](http://goo.gl/EIAP3f) que he escrito en donde se explica paso a paso cómo instalar este plugin.
+
 ### Banners ###
 
 Para hacer que aparezca un banner en una determinada escena, sólo tienes que colocar el prefab **EasyGoogleMobileAds** en la jerarquía de objetos de esa escena.
