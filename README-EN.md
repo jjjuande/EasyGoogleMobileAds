@@ -6,11 +6,11 @@ _[Ver la versión en español de este documento](https://github.com/jjjuande/Eas
 
 ## Download ##
 
-Click [**here**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.10/EasyGoogleMobileAds-0.9.10.unitypackage) to download the latest version of this asset.
+Click [**here**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v1.0.0/EasyGoogleMobileAds-1.0.0.unitypackage) to download the latest version of this asset.
 
 ## Guide of use ##
 
-**Requirements:** For this asset to work, you should have correctly installed the [Google Mobile Ads](https://github.com/googleads/googleads-mobile-plugins/tree/master/unity) Unity plug-in on your project.
+**Requirements:** For this asset to work, you should have correctly installed the [Google Mobile Ads](https://github.com/googleads/googleads-mobile-unity) Unity plug-in on your project.
 
 ### Banners ###
 
@@ -42,8 +42,9 @@ These method don't receive any parameter:
 * **OnAdLoaded**. Called when an ad request has successfully loaded.
 * **OnAdOpened**. Called when an ad is clicked.
 * **OnAdLeftApplication**. Called when the ad click caused the user to leave the application.
-* **OnAdClosing**. Called when the user is about to return to the app after an ad click.
 * **OnAdClosed**. Called when the user returned from the app after an ad click.
+
+**OnAdClosing** is not available anymore.
 
 This is the only method that receives a parameter: *errorMessage*, which will contain the error message.
 * **OnAdFailedToLoad**: Called when an ad request failed to load. Remember to cast *errorMessage* to _string_ before using it.
@@ -82,9 +83,10 @@ These are the events fired by the interstitials:
 * **OnAdLoaded**. The ad is finished downloading and is ready to be shown. _(It won't be shown until the method ShowInterstitial is executed.)_
 * **OnAdOpened**. The interstitial is shown.
 * **OnAdLeftApplication**. The user clicks on the interstitial ad.
-* **OnAdClosing**. The user is about to return the game after the inerstitial is shown.
 * **OnAdClosed**. The user returns to the game after the interstitial is shown.
 * **OnAdFailedToLoad**: There's been an error downloading the ad to be displayed.
+
+**OnAdClosing** is not available anymore.
 
 The following code must be executed after calling _PrepareInterstitial_. If you execute it before, you will get a _NullPointerException_.
 

@@ -67,15 +67,14 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 		bannerView = new BannerView(adUnitID, getAdSize(), adPosition);
 
 		// Register for events
-		bannerView.AdLoaded += HandleAdLoaded;
-		bannerView.AdFailedToLoad += HandleAdFailedToLoad;
-		bannerView.AdOpened += HandleAdOpened;
-		bannerView.AdClosing += HandleAdClosing;
-		bannerView.AdClosed += HandleAdClosed;
-		bannerView.AdLeftApplication += HandleAdLeftApplication;
+		bannerView.OnAdLoaded += HandleAdLoaded;
+		bannerView.OnAdFailedToLoad += HandleAdFailedToLoad;
+		bannerView.OnAdOpening += HandleAdOpened;
+		bannerView.OnAdClosed += HandleAdClosed;
+		bannerView.OnAdLeavingApplication += HandleAdLeftApplication;
 
-		// Load the banner with the request.
-		bannerView.LoadAd(getAdRequest());
+        // Load the banner with the request.
+        bannerView.LoadAd(getAdRequest());
 	}
 	
 	void OnDisable(){
@@ -183,12 +182,6 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 	{
 		// Called when an ad is clicked.
 		SendMessage ("OnAdOpened", SendMessageOptions.DontRequireReceiver);
-	}
-
-	public void HandleAdClosing(object sender, EventArgs args)
-	{
-		// Called when the user is about to return to the app after an ad click.
-		SendMessage ("OnAdClosing", SendMessageOptions.DontRequireReceiver);
 	}
 
 	public void HandleAdClosed(object sender, EventArgs args)

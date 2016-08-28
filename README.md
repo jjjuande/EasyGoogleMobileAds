@@ -6,11 +6,11 @@ _[View the English version of this document](https://github.com/jjjuande/EasyGoo
 
 ## Descarga ##
 
-Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v0.9.10/EasyGoogleMobileAds-0.9.10.unitypackage).
+Descárgalo [**desde aquí**](https://github.com/jjjuande/EasyGoogleMobileAds/releases/download/v1.0.0/EasyGoogleMobileAds-1.0.0.unitypackage).
 
 ## Resumen de uso ##
 
-**Importante:** Para que este prefab funcione, tienes que instalar previamente el plugin de [Google Mobile Ads] (https://github.com/googleads/googleads-mobile-plugins/tree/master/unity) siguiendo las instrucciones de la página de ese proyecto.
+**Importante:** Para que este prefab funcione, tienes que instalar previamente el plugin de [Google Mobile Ads] (https://github.com/googleads/googleads-mobile-unity) siguiendo las instrucciones de la página de ese proyecto.
 
 ### Banners ###
 
@@ -42,9 +42,9 @@ Estos son los que no reciben ningún parámetro:
 * **OnAdLoaded**. El anuncio se ha terminado de descargar y se ha mostrado. _(Si hemos configurado el banner para que cambie su contenido cada tanto tiempo, este evento saltará cada vez que se descargue y muestre un banner nuevo.)_
 * **OnAdOpened**. El usuario ha hecho clic en el anuncio.
 * **OnAdLeftApplication**. Se ejecuta justo después del evento _OnAdOpened_, cuando el usuario ha hecho clic en el anuncio.
-* **OnAdClosing**. El usuario está a punto de volver al juego después de hacer clic en el anuncio.
 * **OnAdClosed**. El usuario vuelve al juego después de hacer clic en el anuncio.
 
+**OnAdClosing** ha dejado de estar disponible.
 
 Este es el único que recibe como parámetro *errorMessage*, que contendrá el mensaje de error:
 * **OnAdFailedToLoad**: Cuando ha ocurrido un error descargando el anuncio. Recuerda hacer un casting a _string_ a la variable *errorMessage* antes de usarla.
@@ -85,9 +85,10 @@ Aunque en los intersticiales tenemos los mismos eventos que en los banners, algu
 * **OnAdLoaded**. El anuncio se ha terminado de descargar y está preparado para mostrarse. _(No se mostrará hasta que no se ejecute el método ShowInterstitial.)_
 * **OnAdOpened**. Se ha mostrado el intersticial.
 * **OnAdLeftApplication**. El  usuario hace clic en el intersticial.
-* **OnAdClosing**. El usuario está a punto de volver al juego después de ver el intersticial.
 * **OnAdClosed**. El usuario vuelve al juego después de ver el intersticial.
 * **OnAdFailedToLoad**: Cuando ha ocurrido un error descargando el anuncio.
+
+**OnAdClosing** ha dejado de estar disponible.
 
 Todo el código siguiente deberá ejecutarse después de haber llamado al _PrepareInterstitial_. Si se hace antes, obtendremos un _NullPointerException_.
 
